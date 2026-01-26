@@ -1,0 +1,21 @@
+{
+    "name": "sylius/telemetry-bundle",
+    "type": "symfony-bundle",
+    "description": "Enforces Sylius telemetry when using official Sylius plugins",
+    "license": "MIT",
+    "require": {
+        "php": "^8.2",
+        "symfony/dependency-injection": "^6.4 || ^7.0",
+        "symfony/http-kernel": "^6.4 || ^7.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Sylius\\TelemetryBundle\\": "src/"
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-main": "1.0-dev"
+        }
+    }
+}
