@@ -1,2 +1,5 @@
 /vendor
 composer.lock
+/var
+.phpunit.result.cache
+tests/TestApplication/.env.local
