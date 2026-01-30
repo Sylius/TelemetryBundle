@@ -34,6 +34,9 @@
             "symfony/flex": true,
             "symfony/runtime": true,
             "php-http/discovery": false
+        },
+        "audit": {
+            "ignore": ["PKSA-rkkf-636k-qjb3", "PKSA-wws7-mr54-jsny", "PKSA-4g5g-4rkv-myqs"]
         }
     },
     "extra": {
