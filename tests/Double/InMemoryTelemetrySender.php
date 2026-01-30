@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Sylius\TelemetryBundle\Tests\Spy;
+namespace Sylius\TelemetryBundle\Tests\Double;
 
 use Sylius\Component\Core\Telemetry\Sender\TelemetrySenderInterface;
 
-final class SpyTelemetrySender implements TelemetrySenderInterface
+final class InMemoryTelemetrySender implements TelemetrySenderInterface
 {
     /** @var list<array<string, mixed>> */
     private array $calls = [];

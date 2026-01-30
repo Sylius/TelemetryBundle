@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Sylius\TelemetryBundle\Tests\Spy;
+namespace Sylius\TelemetryBundle\Tests\Double;
 
 use Sylius\Component\Core\Telemetry\Cache\TelemetryCacheInterface;
 

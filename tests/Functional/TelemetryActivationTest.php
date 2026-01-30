@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Sylius\TelemetryBundle\Tests\Functional;
 
-use Sylius\TelemetryBundle\Tests\Spy\SpyTelemetrySender;
+use Sylius\TelemetryBundle\Tests\Double\InMemoryTelemetrySender;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 final class TelemetryActivationTest extends WebTestCase
@@ -17,7 +17,7 @@ final class TelemetryActivationTest extends WebTestCase
 
         $this->assertResponseIsSuccessful();
 
-        /** @var SpyTelemetrySender $sender */
+        /** @var InMemoryTelemetrySender $sender */
         $sender = static::getContainer()->get('sylius.telemetry.sender');
         $this->assertTrue($sender->wasCalled(), 'Telemetry sender should have been called on admin page request in prod.');
     }
