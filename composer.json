@@ -1,24 +1,49 @@
 {
-    "name": "sylius/telemetry-bundle",
-    "type": "symfony-bundle",
-    "description": "Enforces Sylius telemetry when using official Sylius plugins",
+    "name": "sylius/telemetry",
+    "type": "library",
+    "description": "Telemetry integration for official Sylius plugins",
     "license": "MIT",
     "require": {
         "php": "^8.2",
-        "symfony/dependency-injection": "^6.4 || ^7.0",
-        "symfony/http-kernel": "^6.4 || ^7.0"
+        "sylius/sylius": "^1.12 || ^2.0",
+        "symfony/config": "^5.4 || ^6.0 || ^7.0 || ^8.0",
+        "symfony/dependency-injection": "^5.4 || ^6.0 || ^7.0 || ^8.0"
     },
     "require-dev": {
-        "phpunit/phpunit": "^10.5 || ^11.0"
+        "phpunit/phpunit": "^10.5 || ^11.0",
+        "sylius/test-application": "~1.14.0@alpha || ^2.0.0@alpha",
+        "symfony/browser-kit": "^6.4 || ^7.4",
+        "symfony/debug-bundle": "^6.4 || ^7.4",
+        "symfony/dotenv": "^6.4 || ^7.4",
+        "symfony/http-kernel": "^6.4 || ^7.4",
+        "symfony/runtime": "^6.4 || ^7.4",
+        "symfony/web-profiler-bundle": "^6.4 || ^7.4",
+        "doctrine/cache": "^2.2",
+        "symfony/var-exporter": "^6.4 || ^7.0"
     },
     "autoload": {
         "psr-4": {
-            "Sylius\\TelemetryBundle\\": "src/"
+            "Sylius\\Telemetry\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Sylius\\Telemetry\\Tests\\": "tests/"
+        }
+    },
+    "config": {
+        "allow-plugins": {
+            "symfony/flex": true,
+            "symfony/runtime": true,
+            "php-http/discovery": false
+        },
+        "audit": {
+            "block-insecure": false
         }
     },
     "extra": {
-        "branch-alias": {
-            "dev-main": "1.0-dev"
-        }
-    }
+        "public-dir": "vendor/sylius/test-application/public"
+    },
+    "prefer-stable": true,
+    "minimum-stability": "stable"
 }
