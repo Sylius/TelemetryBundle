@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/10.5/phpunit.xsd"
-         bootstrap="vendor/autoload.php"
+         bootstrap="vendor/sylius/test-application/config/bootstrap.php"
          colors="true"
          failOnEmptyTestSuite="false"
 >
+    <php>
+        <server name="KERNEL_CLASS" value="Sylius\TestApplication\Kernel" />
+    </php>
     <testsuites>
         <testsuite name="TelemetryBundle">
             <directory>tests</directory>
