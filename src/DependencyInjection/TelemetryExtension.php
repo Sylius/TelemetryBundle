@@ -4,15 +4,16 @@ declare(strict_types=1);
 
 namespace Sylius\TelemetryBundle\DependencyInjection;
 
+use Sylius\Component\Core\Telemetry\TelemetrySendManagerInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\PrependExtensionInterface;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 
-final class TelemetryExtension extends Extension implements PrependExtensionInterface
+class TelemetryExtension extends Extension implements PrependExtensionInterface
 {
     public function prepend(ContainerBuilder $container): void
     {
-        if ($this->isDevOrTestEnv($container)) {
+        if ($this->isDevOrTestEnv($container) || !$this->isTelemetrySupported()) {
             return;
         }
 
@@ -28,6 +29,11 @@ final class TelemetryExtension extends Extension implements PrependExtensionInte
 
     public function load(array $configs, ContainerBuilder $container): void
     {
+    }
+
+    protected function isTelemetrySupported(): bool
+    {
+        return interface_exists(TelemetrySendManagerInterface::class);
     }
 
     private function isDevOrTestEnv(ContainerBuilder $container): bool

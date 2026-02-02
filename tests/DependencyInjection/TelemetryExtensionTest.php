@@ -59,6 +59,22 @@ final class TelemetryExtensionTest extends TestCase
         $this->assertNoPrependedConfig($container);
     }
 
+    public function testItSkipsWhenSyliusDoesNotSupportTelemetry(): void
+    {
+        $container = $this->createContainer('prod');
+
+        $extension = new class () extends TelemetryExtension {
+            protected function isTelemetrySupported(): bool
+            {
+                return false;
+            }
+        };
+        $extension->prepend($container);
+
+        $this->assertArrayNotHasKey('SYLIUS_TELEMETRY_ENABLED', $_ENV);
+        $this->assertNoPrependedConfig($container);
+    }
+
     public function testItSkipsInTestEnvironment(): void
     {
         $_ENV['SYLIUS_TELEMETRY_ENABLED'] = '0';
